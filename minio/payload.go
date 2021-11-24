@@ -86,11 +86,6 @@ type S3MinioIAMGroupPolicyConfig struct {
 	MinioIAMGroup      string
 }
 
-// Error represents a basic error that implies the error interface.
-type Error struct {
-	Message string
-}
-
 //Stmt defines policy statement
 type Stmt struct {
 	Sid        string
