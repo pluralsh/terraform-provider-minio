@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/aminueza/terraform-provider-minio/minio"
+	"github.com/globalelements-gmbh/terraform-provider-minio/minio"
 	"github.com/hashicorp/terraform-plugin-sdk/plugin"
 )
 

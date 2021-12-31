@@ -1,6 +1,6 @@
 module github.com/globalelements-gmbh/terraform-provider-minio
 
-go 1.15
+go 1.16
 
 require (
 	github.com/aws/aws-sdk-go v1.42.25
