@@ -8,12 +8,18 @@ import (
 )
 
 var testAccProviders map[string]*schema.Provider
+var testAccProvidersFactories map[string]func() (*schema.Provider, error)
 var testAccProvider *schema.Provider
 
 func init() {
 	testAccProvider = Provider()
 	testAccProviders = map[string]*schema.Provider{
 		"minio": testAccProvider,
+	}
+	testAccProvidersFactories = map[string]func() (*schema.Provider, error){
+		"minio": func() (*schema.Provider, error) {
+			return testAccProvider, nil
+		},
 	}
 }
 
