@@ -3,17 +3,17 @@ package minio
 import (
 	"context"
 	"fmt"
+	"github.com/minio/madmin-go"
 	"regexp"
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	iampolicy "github.com/minio/minio/pkg/iam/policy"
 )
 
 func TestAccMinioIAMPolicy_basic(t *testing.T) {
-	var out iampolicy.Policy
+	var out madmin.PolicyInfo
 	rName := acctest.RandomWithPrefix("tf-acc-test")
 	resourceName := "minio_iam_policy.test"
 
@@ -39,7 +39,7 @@ func TestAccMinioIAMPolicy_basic(t *testing.T) {
 	})
 }
 func TestAccMinioIAMPolicy_disappears(t *testing.T) {
-	var out iampolicy.Policy
+	var out madmin.PolicyInfo
 	rName := acctest.RandomWithPrefix("tf-acc-test")
 	resourceName := "minio_iam_policy.test"
 
@@ -61,7 +61,7 @@ func TestAccMinioIAMPolicy_disappears(t *testing.T) {
 }
 
 func TestAccMinioIAMPolicy_namePrefix(t *testing.T) {
-	var out iampolicy.Policy
+	var out madmin.PolicyInfo
 	namePrefix := "tf-acc-test-"
 	resourceName := "minio_iam_policy.test"
 
@@ -88,7 +88,7 @@ func TestAccMinioIAMPolicy_namePrefix(t *testing.T) {
 }
 
 func TestAccMinioIAMPolicy_policy(t *testing.T) {
-	var out iampolicy.Policy
+	var out madmin.PolicyInfo
 	rName1 := acctest.RandomWithPrefix("tf-acc-test")
 	rName2 := acctest.RandomWithPrefix("tf-acc-test")
 	resourceName := "minio_iam_policy.test"
@@ -127,7 +127,7 @@ func TestAccMinioIAMPolicy_policy(t *testing.T) {
 	})
 }
 
-func testAccCheckMinioIAMPolicyExists(resource string, res b) resource.TestCheckFunc {
+func testAccCheckMinioIAMPolicyExists(resource string, res *madmin.PolicyInfo) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 		rs, ok := s.RootModule().Resources[resource]
 		if !ok {
@@ -140,7 +140,7 @@ func testAccCheckMinioIAMPolicyExists(resource string, res b) resource.TestCheck
 
 		iamconn := testAccProvider.Meta().(*S3MinioClient).S3Admin
 
-		if resp, err := iamconn.InfoCannedPolicy(context.Background(), rs.Primary.ID); res != nil {
+		if resp, err := iamconn.InfoCannedPolicyV2(context.Background(), rs.Primary.ID); res != nil {
 			if err != nil {
 				return err
 			}
