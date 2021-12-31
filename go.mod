@@ -4,7 +4,7 @@ go 1.16
 
 require (
 	github.com/aws/aws-sdk-go v1.42.25
-	github.com/hashicorp/terraform-plugin-sdk v1.17.2
+	github.com/hashicorp/terraform-plugin-sdk/v2 v2.4.0
 	github.com/jen20/awspolicyequivalence v1.1.0
 	github.com/minio/madmin-go v1.1.23
 	github.com/minio/minio v0.0.0-20211231042124-fd6cd527288d // indirect
