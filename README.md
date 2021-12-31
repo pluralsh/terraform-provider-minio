@@ -4,24 +4,18 @@
   </a>
   <h3 align="center" style="font-weight: bold">Terraform Provider for MinIO</h3>
   <p align="center">
-    <a href="https://github.com/aminueza/terraform-provider-minio/graphs/contributors">
+    <a href="https://github.com/globalelements-gmbh/terraform-provider-minio/graphs/contributors">
       <img alt="Contributors" src="https://img.shields.io/github/contributors/aminueza/terraform-provider-minio">
     </a>
-    <a href="https://golang.org/doc/devel/release.html">
-      <img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/aminueza/terraform-provider-minio">
-    </a>
-    <a href="https://gitpod.io/#https://github.com/aminueza/terraform-provider-minio">
-      <img alt="Gitpod Ready-to-Code" src="https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod">
-    </a>
-    <a href="https://github.com/aminueza/terraform-provider-minio/actions?query=workflow%3A%22Terraform+Provider+CI%22">
+    <a href="https://github.com/globalelements-gmbh/terraform-provider-minio/actions?query=workflow%3A%22Terraform+Provider+CI%22">
       <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/aminueza/terraform-provider-minio/Terraform%20Provider%20CI">
     </a>
-    <a href="https://github.com/aminueza/terraform-provider-minio/releases">
+    <a href="https://github.com/globalelements-gmbh/terraform-provider-minio/releases">
       <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/aminueza/terraform-provider-minio?include_prereleases">
     </a>
   </p>
   <p align="center">
-    <a href="https://github.com/aminueza/terraform-provider-minio/tree/master/docs"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/globalelements-gmbh/terraform-provider-minio/tree/master/docs"><strong>Explore the docs »</strong></a>
   </p>
 </p>
 
@@ -45,6 +39,8 @@ A [Terraform](https://www.terraform.io) provider to manage [MinIO Cloud Storage]
 
 Made with <span style="color: #e25555;">&#9829;</span> using [Go](https://golang.org/).
 
+This is a fork of [aminueza/terraform-provider-minio](https://github.com/aminueza/terraform-provider-minio).
+
 ## Supported Versions
 
 - Terraform v0.14
@@ -55,7 +51,7 @@ It just means that we can't guarantee backward compatibility.
 
 ## Building and Installing
 
-Prebuilt versions of this provider are available for MacOS and Linux on the [releases page](https://github.com/aminueza/terraform-provider-minio/releases/latest).
+Prebuilt versions of this provider are available for MacOS and Linux on the [releases page](https://github.com/globalelements-gmbh/terraform-provider-minio/releases/latest).
 
 But if you need to build it yourself, just download this repository, [install](https://taskfile.dev/#/installation) [Task](https://taskfile.dev/):
 
@@ -126,7 +122,7 @@ Inside `.devcontainer` folder is the configuration of a Docker Container with al
 
 ## Roadmap
 
-See the [open issues](https://github.com/aminueza/terraform-provider-minio/issues) for a list of proposed features (and known issues). See [CONTRIBUTION.md](./docs/github/CONTRIBUTING.md) for more information.
+See the [open issues](https://github.com/globalelements-gmbh/terraform-provider-minio/issues) for a list of proposed features (and known issues). See [CONTRIBUTION.md](./docs/github/CONTRIBUTING.md) for more information.
 
 ## License
 

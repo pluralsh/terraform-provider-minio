@@ -1,8 +1,8 @@
 ARG GO_VERSION="1.15"
 
 FROM hashicorp/terraform:0.14.0 as terraform
-FROM minio/minio:RELEASE.2020-11-25T22-36-25Z as minio
-FROM minio/mc:RELEASE.2020-11-25T23-04-07Z-amd64 as mc
+FROM minio/minio:RELEASE.2021-12-20T22-07-16Z as minio
+FROM minio/mc:RELEASE.2021-12-20T22-07-16Z as mc
 FROM rzrbld/adminio-api:release-1.6 as adminio-api
 FROM rzrbld/adminio-ui:release-1.7 as adminio-ui
 FROM mcr.microsoft.com/vscode/devcontainers/go:0-${GO_VERSION}

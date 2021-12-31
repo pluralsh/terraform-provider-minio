@@ -1,12 +1,13 @@
-module github.com/aminueza/terraform-provider-minio
+module github.com/globalelements-gmbh/terraform-provider-minio
 
 go 1.15
 
 require (
-	github.com/aws/aws-sdk-go v1.36.22
-	github.com/hashicorp/terraform-plugin-sdk v1.16.0
+	github.com/aminueza/terraform-provider-minio v1.2.0
+	github.com/aws/aws-sdk-go v1.42.25
+	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/jen20/awspolicyequivalence v1.1.0
-	github.com/minio/minio v0.0.0-20201205210044-9c53cc1b8378
-	github.com/minio/minio-go/v7 v7.0.7-0.20201217170524-3baf9ea06f7c
+	github.com/minio/minio v0.0.0-20211231042124-fd6cd527288d // indirect
+	github.com/minio/minio-go/v7 v7.0.20
 	gotest.tools/v3 v3.0.3
 )
