@@ -1,17 +1,17 @@
 <p align="center">
-  <a href="https://github.com/aminueza/terraform-provider-minio">
+  <a href="https://github.com/globalelements-gmbh/terraform-provider-minio">
     <img src="https://i.imgur.com/yijdDec.png" alt="minio-provider-terraform" width="200">
   </a>
   <h3 align="center" style="font-weight: bold">Terraform Provider for MinIO</h3>
   <p align="center">
     <a href="https://github.com/globalelements-gmbh/terraform-provider-minio/graphs/contributors">
-      <img alt="Contributors" src="https://img.shields.io/github/contributors/aminueza/terraform-provider-minio">
+      <img alt="Contributors" src="https://img.shields.io/github/contributors/globalelements-gmbh/terraform-provider-minio">
     </a>
     <a href="https://github.com/globalelements-gmbh/terraform-provider-minio/actions?query=workflow%3A%22Terraform+Provider+CI%22">
-      <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/aminueza/terraform-provider-minio/Terraform%20Provider%20CI">
+      <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/globalelements-gmbh/terraform-provider-minio/Terraform%20Provider%20CI">
     </a>
     <a href="https://github.com/globalelements-gmbh/terraform-provider-minio/releases">
-      <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/aminueza/terraform-provider-minio?include_prereleases">
+      <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/globalelements-gmbh/terraform-provider-minio?include_prereleases">
     </a>
   </p>
   <p align="center">

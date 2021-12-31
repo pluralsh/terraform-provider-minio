@@ -7,15 +7,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 )
 
-var testAccProviders map[string]*schema.Provider
 var testAccProvidersFactories map[string]func() (*schema.Provider, error)
 var testAccProvider *schema.Provider
 
 func init() {
 	testAccProvider = Provider()
-	testAccProviders = map[string]*schema.Provider{
-		"minio": testAccProvider,
-	}
 	testAccProvidersFactories = map[string]func() (*schema.Provider, error){
 		"minio": func() (*schema.Provider, error) {
 			return testAccProvider, nil
@@ -30,7 +26,7 @@ func TestProvider(t *testing.T) {
 }
 
 func TestProvider_impl(t *testing.T) {
-	var _ *schema.Provider = Provider()
+	var _ = Provider()
 }
 
 func testAccPreCheck(t *testing.T) {
