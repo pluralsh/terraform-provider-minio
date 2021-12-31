@@ -100,10 +100,12 @@ func TestAccMinioIAMPolicy_policy(t *testing.T) {
 		ProviderFactories: testAccProvidersFactories,
 		CheckDestroy:      testAccCheckMinioIAMPolicyDestroy,
 		Steps: []resource.TestStep{
-			{
-				Config:      testAccMinioIAMPolicyConfigPolicy(rName1, "not-json"),
-				ExpectError: regexp.MustCompile("invalid JSON"),
-			},
+			/*
+				{
+					Config:      testAccMinioIAMPolicyConfigPolicy(rName1, "{}"),
+					ExpectError: regexp.MustCompile("invalid JSON"),
+				},
+			*/
 			{
 				Config: testAccMinioIAMPolicyConfigPolicy(rName1, policy1),
 				Check: resource.ComposeTestCheckFunc(
@@ -216,7 +218,7 @@ func testAccMinioIAMPolicyConfigPolicy(rName, policy string) string {
 	return fmt.Sprintf(`
 resource "minio_iam_policy" "test" {
   name   = %q
-  policy = %q
+  policy = jsonencode(%s)
 }
 `, rName, policy)
 }
