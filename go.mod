@@ -3,7 +3,6 @@ module github.com/globalelements-gmbh/terraform-provider-minio
 go 1.15
 
 require (
-	github.com/aminueza/terraform-provider-minio v1.2.0
 	github.com/aws/aws-sdk-go v1.42.25
 	github.com/hashicorp/terraform-plugin-sdk v1.17.2
 	github.com/jen20/awspolicyequivalence v1.1.0
