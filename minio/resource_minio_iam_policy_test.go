@@ -9,7 +9,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-sdk/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/terraform"
-	iampolicy "github.com/minio/minio/pkg/iam/policy"
+	iampolicy "github.com/minio/pkg/iam/policy"
 )
 
 func TestAccMinioIAMPolicy_basic(t *testing.T) {
@@ -127,7 +127,7 @@ func TestAccMinioIAMPolicy_policy(t *testing.T) {
 	})
 }
 
-func testAccCheckMinioIAMPolicyExists(resource string, res *iampolicy.Policy) resource.TestCheckFunc {
+func testAccCheckMinioIAMPolicyExists(resource string, res b) resource.TestCheckFunc {
 	return func(s *terraform.State) error {
 		rs, ok := s.RootModule().Resources[resource]
 		if !ok {
