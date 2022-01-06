@@ -2,9 +2,9 @@ package minio
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log"
+	"bytes"
 	"regexp"
 
 	"github.com/aws/aws-sdk-go/aws"
@@ -66,7 +66,7 @@ func minioCreatePolicy(d *schema.ResourceData, meta interface{}) error {
 
 	log.Printf("[DEBUG] Creating IAM Policy %s: %v", name, iamPolicyConfig.MinioIAMPolicy)
 
-	err := iamPolicyConfig.MinioAdmin.AddCannedPolicy(context.Background(), name, ParseIamPolicyConfigFromString(iamPolicyConfig.MinioIAMPolicy))
+	err := AddPolicy(iamPolicyConfig.MinioAdmin, name, ParseIamPolicyConfigFromString(iamPolicyConfig.MinioIAMPolicy))
 	if err != nil {
 		return NewResourceError("Unable to create policy", name, err)
 	}
@@ -89,22 +89,11 @@ func minioReadPolicy(d *schema.ResourceData, meta interface{}) error {
 
 	log.Printf("[WARN] (%v)", output)
 
-	if &output == nil {
-		log.Printf("[WARN] No IAM policy by name (%s) found, removing from state", d.Id())
-		d.SetId("")
-		return nil
-	}
-
 	if err := d.Set("name", string(d.Id())); err != nil {
 		return err
 	}
 
-	outputAsJSON, err := json.Marshal(&output)
-	if err != nil {
-		return err
-	}
-
-	if err := d.Set("policy", string(outputAsJSON)); err != nil {
+	if err := d.Set("policy", string(bytes.TrimSpace(output))); err != nil {
 		return err
 	}
 
@@ -142,7 +131,7 @@ func minioUpdatePolicy(d *schema.ResourceData, meta interface{}) error {
 			return NewResourceError("Unable to update policy", name, err)
 		}
 
-		err = iamPolicyConfig.MinioAdmin.AddCannedPolicy(context.Background(), nn.(string), ParseIamPolicyConfigFromString(iamPolicyConfig.MinioIAMPolicy))
+		err = AddPolicy(iamPolicyConfig.MinioAdmin, nn.(string), ParseIamPolicyConfigFromString(iamPolicyConfig.MinioIAMPolicy))
 		if err != nil {
 			return NewResourceError("Unable to update policy", name, err)
 		}

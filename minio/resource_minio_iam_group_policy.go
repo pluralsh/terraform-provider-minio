@@ -2,7 +2,7 @@ package minio
 
 import (
 	"context"
-	"encoding/json"
+	// "encoding/json"
 	"fmt"
 	"log"
 	"strings"
@@ -67,7 +67,7 @@ func minioCreateGroupPolicy(d *schema.ResourceData, meta interface{}) error {
 
 	log.Printf("[DEBUG] Creating IAM Group Policy %s: %v", name, iAMGroupPolicyConfig.MinioIAMPolicy)
 
-	err := iAMGroupPolicyConfig.MinioAdmin.AddCannedPolicy(context.Background(), name, ParseIamPolicyConfigFromString(iAMGroupPolicyConfig.MinioIAMPolicy))
+	err := AddPolicy(iAMGroupPolicyConfig.MinioAdmin, name, ParseIamPolicyConfigFromString(iAMGroupPolicyConfig.MinioIAMPolicy))
 	if err != nil {
 		return NewResourceError("Unable to create group policy", iAMGroupPolicyConfig.MinioIAMPolicy, err)
 	}
@@ -97,18 +97,11 @@ func minioReadGroupPolicy(d *schema.ResourceData, meta interface{}) error {
 		return nil
 	}
 
-	outputAsJSON, err := json.Marshal(&output)
-	if err != nil {
-		return err
-	}
-
-	log.Printf("[WARN] (%v)", outputAsJSON)
-
 	if err := d.Set("name", policyName); err != nil {
 		return err
 	}
 
-	if err := d.Set("policy", string(outputAsJSON)); err != nil {
+	if err := d.Set("policy", string(output)); err != nil {
 		return err
 	}
 
@@ -149,7 +142,7 @@ func minioUpdateGroupPolicy(d *schema.ResourceData, meta interface{}) error {
 			return NewResourceError("Unable to update group policy", name, err)
 		}
 
-		err = iAMGroupPolicyConfig.MinioAdmin.AddCannedPolicy(context.Background(), nn.(string), ParseIamPolicyConfigFromString(iAMGroupPolicyConfig.MinioIAMPolicy))
+		err = AddPolicy(iAMGroupPolicyConfig.MinioAdmin, nn.(string), ParseIamPolicyConfigFromString(iAMGroupPolicyConfig.MinioIAMPolicy))
 		if err != nil {
 			return NewResourceError("Unable to update group policy", name, err)
 		}

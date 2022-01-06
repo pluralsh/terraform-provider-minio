@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"regexp"
 	"testing"
+	"bytes"
 
 	"github.com/hashicorp/terraform-plugin-sdk/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/resource"
@@ -144,8 +145,9 @@ func testAccCheckMinioIAMPolicyExists(resource string, res *iampolicy.Policy) re
 			if err != nil {
 				return err
 			}
+			parsedPolicy, _ := iampolicy.ParseConfig(bytes.NewReader(resp))
 
-			res = resp
+			res = parsedPolicy
 		}
 
 		return nil

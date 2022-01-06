@@ -1,8 +1,10 @@
 package minio
 
 import (
+	"context"
 	"crypto/rand"
 	"encoding/base64"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
@@ -12,6 +14,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	iampolicy "github.com/minio/pkg/iam/policy"
+	"github.com/minio/madmin-go"
 )
 
 const (
@@ -150,4 +153,13 @@ func ParseIamPolicyConfigFromString(policy string) *iampolicy.Policy {
 		log.Fatalln(err)
 	}
 	return parsedPolicy
+}
+
+func AddPolicy(admin *madmin.AdminClient, name string, policy *iampolicy.Policy) error {
+	encoded, err := json.Marshal(policy)
+	if err != nil {
+		return err
+	}
+
+	return admin.AddCannedPolicy(context.Background(), name, encoded)
 }
