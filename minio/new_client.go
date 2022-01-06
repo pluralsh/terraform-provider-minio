@@ -5,7 +5,7 @@ import (
 	"log"
 
 	minio "github.com/minio/minio-go/v7"
-	"github.com/minio/minio/pkg/madmin"
+	"github.com/minio/madmin-go"
 )
 
 //NewClient returns a new minio client
